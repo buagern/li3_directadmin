@@ -7,7 +7,7 @@ Usage
 ----------
 See http://www.directadmin.com/api.html
 
-Commands are like "CMD_API_ADMIN_STATS". You can use every command that's possible in the 
+Commands are like CMD_API_ADMIN_STATS. You can use every command that's possible in the 
 DirectAdmin API with camelcase and without the "CMD_API_"-prefix.
 
 Example
