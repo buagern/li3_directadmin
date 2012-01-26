@@ -1,26 +1,40 @@
-The most rad li3  DirectAdmin API
-==============================
+# The most rad li3  DirectAdmin API
 
-Under development....
+###Under development....
+Notice that this library is still under development. Everything works but has not been extensively tested
 
-Usage
-----------
-See http://www.directadmin.com/api.html
 
-Commands are like CMD_API_ADMIN_STATS. You can use every command that's possible in the 
-DirectAdmin API with camelcase and without the "CMD_API_"-prefix.
+###How to use
+First add the library in the ./config/bootstrap/libraries.php by adding the following code:
 
-Example
-----------
-<?php
+    Libraries::add('li3_directadmin');
+      
+Lazy load the library in top of the controller that you want to use
 
-$DirectAdmin = new DirectAdmin(array('host' => 'mydaserver.com', 'port' => '2222', 
-'username' => 'user', 'password' => 'pass'));
+    use \li3_directadmin\extensions\adapter\DirectAdmin;
+      
+Now you can call the library in the controller:
 
-$users = $DirectAdmin->showUsers();
-return compact('users');
+    public function show_users() {
+      
+      // Initialize DirectAdmin object
+      $directAdmin = new DirectAmdmin(array(
+        'host' => 'mydahost.com', 
+        'port' => 2222, 
+        'username' => 'user',
+        'password' => 'pass'
+      ); 
+      
+      // Send 'CMD_API_SHOW_USERS' of the reseller with username 'business'
+      $users = $directAdmin->showUsers(array('reseller' => 'business')); 
+      
+      // Return as array
+      return compact('users');
+      
+      }
+      
+###Notice
+All commands are available, because the methods are overloaded by __call.
 
-?>
-
-Notice: I'm new to Lithium (and all other Frameworks) so if you can make my library better, 
-please fork. Maby make it static? So that I can call DirectAdmin::showUsers(); ??
+Example:
+  *showUsers will be converted into CMD_API_SHOW_USERS automatically*
