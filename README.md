@@ -3,6 +3,9 @@
 ###Under development....
 Notice that this library is still under development. Everything works but has not been extensively tested
 
+###Documentation
+See the [API-documentation](http://www.directadmin.com/api.html) for commands!
+
 
 ###How to use
 First add the library in the ./config/bootstrap/libraries.php by adding the following code:
@@ -34,7 +37,7 @@ Now you can call the library in the controller:
       }
       
 ###Notice
-All commands are available, because the methods are overloaded by __call.
+All commands are available, because the methods are overloaded by __call. YOu can send add the parameters in $param as an array!
 
 Example:
   *showUsers will be converted into CMD_API_SHOW_USERS automatically*
